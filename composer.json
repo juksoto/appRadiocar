@@ -21,7 +21,7 @@
         ],
         "psr-4": {
           "app\\": "app/",
-          "appRadiocar\\": "app/Radiocar"
+          "Radiocar\\": "app/Radiocar"
         }
     },
     "autoload-dev": {
