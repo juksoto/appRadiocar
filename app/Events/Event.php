@@ -1,6 +1,6 @@
 <?php
 
-namespace appRadiocar\Events;
+namespace app\Events;
 
 abstract class Event
 {

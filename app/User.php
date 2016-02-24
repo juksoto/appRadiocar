@@ -1,6 +1,6 @@
 <?php
 
-namespace appRadiocar;
+namespace app;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

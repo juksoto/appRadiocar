@@ -151,10 +151,12 @@ return [
         /*
          * Application Service Providers...
          */
-        appRadiocar\Providers\AppServiceProvider::class,
-        appRadiocar\Providers\AuthServiceProvider::class,
-        appRadiocar\Providers\EventServiceProvider::class,
-        appRadiocar\Providers\RouteServiceProvider::class,
+        app\Providers\AppServiceProvider::class,
+        app\Providers\AuthServiceProvider::class,
+        app\Providers\EventServiceProvider::class,
+        app\Providers\RouteServiceProvider::class,
+
+        /*My Provides*/
 
     ],
 
