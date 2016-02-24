@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'appRadiocar\Http\Controllers';
+    protected $namespace = 'Radiocar\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

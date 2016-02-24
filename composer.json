@@ -20,7 +20,8 @@
             "database"
         ],
         "psr-4": {
-            "appRadiocar\\": "app/"
+            "App\\": "app/",
+            "appRadiocar\\": "app/Radiocar"
         }
     },
     "autoload-dev": {
