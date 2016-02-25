@@ -1,0 +1,311 @@
+@import "nib"
+@import "fonts.styl"
+
+/**
+* Color Swatches 
+* http://bootflat.github.io/documentation.html
+*/
+colorAqua1 = #4FC1E9
+colorAqua2 = #3BAFDA
+
+colorBitterSweet1 = #FC6E51
+colorBitterSweet2 = #E9573F
+
+colorBlueJeans1 = #5D9CEC
+colorBlueJeans2 = #4A89DC
+
+colorDarkGray1 = #656D78
+colorDarkGray2 = #434A54
+
+colorGrapeFruit1 = #ED5565
+colorGrapeFruit2 = #DA4453
+
+colorGrass1 = #A0D468
+colorGrass2 = #8CC152
+
+colorLavender1 = #AC92EC
+colorLavender2 = #967ADC
+
+colorLigthGray1 = #F5F7FA
+colorLigthGray2 = #E6E9ED
+
+colorMediumGray1 = #CCD1D9
+colorMediumGray2 = #AAB2BD
+
+colorMint1 = #48CFAD
+colorMint2 = #37BC9B
+
+colorPink1 = #EC87C0
+colorPink2 = #D770AD
+
+colorRadiocar1 = #0067B5
+colorRadiocar2 = #024A82
+
+colorSunFlower1 = #FFCE54
+colorSunFlower2 = #F6BB42
+colorSunFlower3 = #8a6d3b
+
+/****
+* Functions
+*/
+
+/** Functions fonts */
+
+robotoSlab()
+	font-family: 'Roboto Slab', serif !important
+
+	
+/** Create styles for the buttons **/
+createBtnColor(bgColor1, bgColor2, colorFont1, colorFont2)
+	background-color bgColor1
+	color colorFont1 
+	&:hover
+		background-color bgColor2
+		color colorFont2 
+
+/** Create styles for the alerts **/
+createAlerts(bgColor, borderColor, colorFont, colorLink)
+	background-color bgColor
+	border borderColor
+	color colorFont
+	a
+		color colorLink
+		&:hover
+			color colorFont
+			text-decoration underline
+
+createIconColor(colorIcon)
+	color colorIcon
+
+/****
+* Tags
+*/	
+
+body
+	background rgb(241, 242, 246) !important
+	font-size 16px
+	font-weight 500
+	robotoSlab()
+
+h1, h2, h3, h4, h5, h6
+	font-weight 400
+	robotoSlab()
+
+h1
+	color colorRadiocar1
+
+html, body
+	/*background white*/
+	height 100%
+
+input[type="file"], input[type="checkbox"], input[type="radio"], select
+	margin 0 0 1rem 0
+
+ul
+	margin 0 !important
+	padding 0 !important
+	list-style none
+
+table
+	thead
+		th
+			background colorMediumGray1
+			padding .3em
+			text-align left
+		td
+			background white
+			padding 0.4em
+			font-weight 500
+	tbody
+		tr:nth-child(even)
+			background colorLigthGray1
+		td
+			padding .3em
+	
+/****
+ * Alerts
+ */
+ 
+.successful
+ 	createAlerts(colorGrass1, colorGrass2, colorGrass2, white)
+	
+.notice
+	createAlerts(colorSunFlower1, colorSunFlower2, colorSunFlower3, white )
+
+.danger
+	createAlerts(colorGrapeFruit1, colorGrapeFruit2, colorGrapeFruit2, white )
+
+.info
+	createAlerts(colorAqua1, colorAqua2, colorAqua2, white )
+	
+.alert-floating
+	display none
+	left 50%
+	margin-left -10em
+	position absolute
+	right 0
+	text-align center
+	top 3em
+	width 20em
+	z-index 9999
+		
+/****
+ * Buttons
+ */
+.btn-aqua
+	createBtnColor(colorAqua1,colorAqua2, white, white )
+.btn-blue
+	createBtnColor(colorBlueJeans1,colorBlueJeans2, white, white )
+.btn-light-gray
+	createBtnColor(colorLigthGray1,colorLigthGray2, black, black )
+.btn-green
+	createBtnColor(colorGrass1,colorGrass2, white, white )
+.btn-medium-gray
+	createBtnColor(colorMediumGray1,colorMediumGray2, white, white )
+.btn-red
+	createBtnColor(colorGrapeFruit1,colorGrapeFruit2, white, white )
+.btn-yellow
+	createBtnColor(colorSunFlower1,colorSunFlower2, white, white )
+.btn-mint
+	createBtnColor(colorMint1,colorMint2, white, white )
+.btn-padding
+	padding-bottom 8px
+	padding-top 8px
+.btn-header
+	margin-top 3rem	
+	margin-bottom 1.06rem
+/****
+* Class Content Custom
+*/
+.admin 
+	table.show-data 
+		thead
+			th
+				background white
+				border-bottom 1px solid colorMediumGray1
+				padding 1em
+		tr.row-data
+			height 5.8em
+			&:hover
+				.row-actions
+					display block
+		td
+			border 0
+			padding 1em
+			&:first-child
+				width 10em
+		.row-actions
+			font-size 0.8em
+			display none
+				
+	#headquarter_template_0 #remove_current_headquarter
+	#headquarter_template_0 #phonewrapper_0_headquarter_0 #remove_current
+	#email_template_0 #remove_current_email
+		display none
+	#remove_current_headquarter
+	#remove_current_collaborators
+		cursor pointer
+		span 
+			margin-top 25px
+	#remove_current
+	#remove_current_email
+		cursor pointer
+		span 
+			margin-top 10px
+	.collaborators
+		margin-bottom 10rem
+
+	#collaborators_template_0
+		display none
+		
+	
+
+.col-centered
+	display block
+	margin-right auto
+	margin-left auto
+	float none
+
+	
+/***
+* Icon Color
+*/
+.color-danger
+	createIconColor(colorGrapeFruit2)
+
+.color-notice, .color-warning
+	createIconColor(colorSunFlower2)
+
+
+/****
+* Layout
+*/
+
+/** Check Active e Inactive */
+.check-active
+	color colorGrass2
+.check-inactive
+	color colorLigthGray2
+
+/*
+ * Estilos crear usuarios
+ */
+.aside_user
+	list-style none
+	padding 0
+	.aside_user_item
+		background: #fff;
+		border: 1px solid #d4d4d4;
+		border-radius: 3px;
+		margin: 0.5em 0em;
+		padding: 0.5em 1em;
+		a
+			color #000
+			span
+				color colorGrapeFruit2
+				font-size 12px
+/*
+ * Estilos para páneles de entradas, páginas, país, ciudad, usuarios,
+ */
+.panel-mediumgray
+	background colorDarkGray2 !important
+	color #fff
+	strong
+		color #fff
+	h3
+		color #fff !important
+
+.panel-grapefruit
+	background colorGrapeFruit2 !important
+	
+.panel-bluejeans
+	background colorBlueJeans2 !important
+
+.panel-heading h3
+	color #4E4E4E
+	font-size 1em
+	padding 0px 15px !important
+	margin 0
+	
+/*
+ * Padding al lado izquierdo y derecho, en los paneles de creación de usuarios y universidades
+ */
+.fill
+	padding 15px 40px
+	box-shadow 0px 0px 5px #d4d4d4
+	
+.border-box
+	border: 1px solid #d4d4d4;
+	box-shadow 0px 0px 3px #d4d4d4
+	
+.separator-program
+	border-bottom 1px solid #d4d4d4
+	border-bottom-style dotted
+	border-bottom-width 2px
+	display block
+	margin 0em auto .7em auto
+	padding-bottom 10px
+	
+.color-program
+	color colorGrapeFruit2
+	

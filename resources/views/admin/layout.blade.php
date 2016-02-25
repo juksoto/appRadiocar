@@ -6,13 +6,15 @@
     <title>
       </title>
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet" type="text/css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Bree+Serif|Lora:400,400italic' rel='stylesheet' type='text/css'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="{{ asset('bootflat/css/bootflat.css') }}" rel="stylesheet" type="text/css" >
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
     @yield('head')
 </head>
 <body class="admin">
-    <section class="container-fluid">
+    <section class="container">
         <section class="row top">
 
         </section>

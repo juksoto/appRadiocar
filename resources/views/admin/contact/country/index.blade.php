@@ -3,19 +3,16 @@
 @section('content')
 
     <article class="row">
-        <div class="col-md-12">
-            <h1 class="title_main">Configuracion regional: País</h1>
+        <div class="col-md-8">
+            <h1 class="title_main">Configuración regional: País</h1>
         </div>
-    </article>
-
-    <article class="row">
-        <div class="col-md-6">
-            <a class="btn btn-default" href="{{ route('admin.country.create') }}">
+        <div class="col-md-4 text-right">
+           <a class="btn btn-success btn-header" href="{{ route('admin.country.create') }}">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 {{ trans('admin.submit.add_country') }}
             </a>
         </div>
-    </article> <br>
+    </article>
 
     <article class="row">
         <div class="col-md-12">
