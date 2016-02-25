@@ -3,10 +3,10 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>id</th>
-                <th>{{ trans('admin.country.country') }}</th>
-                <th>{{ trans('admin.country.iso') }}</th>
-                <th class="text-center">{{ trans('admin.status.status') }}</th>
+                <th class="text-capitalize">id</th>
+                <th class="text-capitalize">{{ trans('admin.country.country') }}</th>
+                <th class="text-capitalize">{{ trans('admin.country.iso') }}</th>
+                <th class="text-center text-capitalize">{{ trans('admin.status.status') }}</th>
             </tr>
             </thead>
             <tbody>
