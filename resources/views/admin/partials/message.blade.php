@@ -15,8 +15,22 @@
         {{ Session::get("message") }}
     </div>
 @endif
-<!--<section class="alert-floating ">
-    <p>
-    </p>
-</section>-->
+
+@if(Session::has('message_floating'))
+    <section class="alert-floating alert {{ Session::get("message_alert") }} alert-dismissable">
+        <p>
+            {{ Session::get("message_floating") }}
+        </p>
+    </section>
+
+    @section('scripts')
+        @parent
+        <script type="text/javascript">
+            $(document).ready(function() {
+                showAlertFloating();
+            });
+        </script>
+    @endsection
+
+@endif
 

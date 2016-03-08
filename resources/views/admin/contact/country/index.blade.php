@@ -7,6 +7,7 @@
             <h1 class="title_main">Configuración regional: País</h1>
         </div>
     </article>
+    @include('admin.partials.message')
 
     <section class="row">
         {!! Form::model(Request::all(),['route' => 'admin.country.index', 'method' => 'GET', 'class' => 'form-inline' ])!!}
@@ -51,4 +52,7 @@
         {!! Form::close()!!}
     </section>
 
+@endsection
+@section('scripts')
+    <script type="text/javascript" src="{{URL::asset('js/custom/custom.js')}}"></script>
 @endsection

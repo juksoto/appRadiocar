@@ -13,7 +13,7 @@
             @forelse($data -> collections as $collection)
                 <tr data-id="{{ $collection->id  }}">
                     <td>  {!! $collection -> id !!}</td>
-                    <td> <a href="{{ route('admin.settings.country.edit', $collection) }}"> {!! $collection -> country !!} </a></td>
+                    <td> <a href="{{ route('admin.country.edit', $collection) }}"> {!! $collection -> country !!} </a></td>
                     <td> {!! $collection -> iso !!}</td>
                     <td class="text-center"> <a href="#" class="btn-active"><span class="icon-check @if ($collection->active == 1) check-active  @else check-inactive @endif "></span></a>
                     </td>

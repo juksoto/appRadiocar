@@ -27,16 +27,15 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
-});
+    /**
+    * Groups AdminControllers Controllers
+    */
 
-/**
- * Groups AdminControllers Controllers
-*/
-Route::group(['prefix' => 'admin'], function()
-{
-    Route::resource('country', 'AdminControllers\Contact\CountryController');
+    Route::group(['prefix' => 'admin'], function()
+    {
+        Route::resource('country', 'AdminControllers\Contact\CountryController');
 
+    });
 });
 
 

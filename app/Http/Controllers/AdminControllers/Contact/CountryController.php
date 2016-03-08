@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Session;
 use Radiocar\Core\Entities\Contact\RcCountry;
 use Radiocar\Core\Helpers;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
-
+use App\Http\Requests\CreateCountryRequest;
 class CountryController extends Controller
 {
     /**
@@ -73,7 +74,9 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $data = $this -> data;
+
+        return view('admin.contact.country.create',  compact('data')); //
     }
 
     /**
@@ -82,9 +85,17 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCountryRequest $request)
     {
-        //
+        $country = RcCountry::create( $request -> all() );
+
+        $message_floating = "Ha sido creado un nuevo país";
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect() -> route('admin.country.index');
     }
 
     /**

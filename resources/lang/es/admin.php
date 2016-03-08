@@ -29,12 +29,13 @@ return [
         'no_phones'                 => 'No hay teléfonos. Debe agregar uno.',
     ),
     'country'  => array(
-        'country'                   => 'país',
+        'content_header'            => 'Ingresa el nombre del nuevo país y su código ISO',
         'countries'                 => 'paises',
-        'name_country'              => 'nombre del país',
-        'name_country'              => 'nombre del país',
-        'iso_country'               => 'iso del país',
-        'iso'                       => 'iso',
+        'country'                   => 'país',
+        'iso'                       => 'ISO',
+        'iso_country'               => 'ISO del país',
+        'name_country'              => 'Nombre del país',
+        'new_country'               => 'Nuevo país',
         'select_a_country'          => 'Seleccionar un país',
 
         //validation
@@ -83,6 +84,8 @@ return [
      'message'  => array(
         'already_exists'                     => 'ya existe.',
         'city_already_exists'                => 'Esta ciudad ya existe.',
+        'country_already_exists'             => 'El nombre del país ya existe. Recomendamos mirar en los paises inactivos',
+        'iso_already_exists'                 => 'El ISO del país ya existe. Recomendamos mirar en los paises inactivos',
         'city_is_required'                   => 'El nombre de la ciudad es obligatoria.',
         'country_is_required'                => 'El país es un campo obligatorio.',
         'email_already_exists'               => 'El correo ya existe.',
