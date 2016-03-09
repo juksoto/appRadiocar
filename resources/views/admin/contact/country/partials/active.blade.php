@@ -7,7 +7,7 @@
         {{ trans('admin.status.published') }}
     </span>
 
-        {!! Form::open(['route' => ['admin.settings.country.destroy', $data -> collection], 'method' => 'DELETE', 'class' => '' ])!!}
+        {!! Form::open(['route' => ['admin.country.destroy', $data -> collection], 'method' => 'DELETE', 'class' => '' ])!!}
 
         <article class="small-12 medium-12 large-12">
 
@@ -23,7 +23,7 @@
         {{ trans('admin.status.unpublished') }}
     </span>
 
-        {!! Form::open(['route' => ['admin.settings.country.destroy', $data -> collection], 'method' => 'DELETE', 'class' => '' ])!!}
+        {!! Form::open(['route' => ['admin.country.destroy', $data -> collection], 'method' => 'DELETE', 'class' => '' ])!!}
 
         <article class="small-12 medium-12 large-12">
 

@@ -1,7 +1,7 @@
 function showAlertFloating() {
-    console.log('llamado')
-    $(".alert-floating").show();
-    $(".alert-floating").delay(1500).hide(500);
+     $(".alert-floating").fadeIn('slow', function () {
+            $(this).delay(1500).fadeOut('slow');
+    });
 }
 
 $('.btn-active').click(function () {
@@ -11,18 +11,21 @@ $('.btn-active').click(function () {
     var url = form.attr('action').replace(':VALUE_ID', id);
     var data = form.serialize();
 
-    $.post(url, data, function (result) {
-        $(".alert-floating p ").html(result.message);
-        $(".alert-floating p").addClass(result.class);
-        $(".alert-floating").show();
-        $(".alert-floating").delay(1500).hide(600);
+    function animateFloating(message, classAlert)
+    {
+        $( "#content-message" ).append('<section class="alert-floating alert alert-dismissable"><p></p></section>' );
+        $(".alert-floating p ").html(message);
+        $(".alert-floating").addClass(classAlert);
+        $(".alert-floating").fadeIn('slow', function () {
+            $(this).delay(1500).fadeOut('slow');
+        });
         row.fadeOut();
+    }
+
+    $.post(url, data, function (result) {
+        animateFloating(result.message, result.class)
     }).fail(function () {
-        $(".alert-floating p ").html("Ha ocurrido un error");
-        $(".alert-floating p").addClass("danger");
-        $(".alert-floating").show();
-        $(".alert-floating").delay(1500).hide(600);
-        row.show();
+        animateFloating(result.message, "alert-danger")
     });
     
 });

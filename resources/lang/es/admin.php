@@ -32,6 +32,7 @@ return [
         'content_header'            => 'Ingresa el nombre del nuevo país y su código ISO',
         'countries'                 => 'paises',
         'country'                   => 'país',
+        'edit_country'              => 'Editar país',
         'iso'                       => 'ISO',
         'iso_country'               => 'ISO del país',
         'name_country'              => 'Nombre del país',
@@ -53,9 +54,6 @@ return [
         'enter_a_name_city'      => 'Ingrese el nombre de la ciudad',
     ),
 
-    'collaborators'  => array(
-        'collaborators'    => 'colaboradores'
-    ),
 
     'filter'  => array(
         'active'           => 'activo',
@@ -100,6 +98,10 @@ return [
         'user_already_exists'                => 'El usuario ya existe.',
         'user_is_required'                   => 'El usuario es un campo requerido.',
 
+        //alerts
+        
+        'alert_field_update'                 => 'se actualizo.',
+
         // University
         'img_profile_university'             => 'La imagen debe ser cuadrada (200px) em formato png o jpg. Max 150 kb',
         'img_header_university'              => 'Las medidas de la imagen es 1440px - 350px em formato png o jpg. Max 500 kb',
@@ -110,25 +112,7 @@ return [
 
 
     ),
-     'modality'  => array(
-        'modality'         => 'modalidad.',
-        'classroom'        => 'presencial',
-        'virtual'          => 'virtual',
-        'mixed'            => 'mixto',
-    ),
 
-   
-   'representative'  => array(
-        'email_representative'          => 'Correo del representante',
-        'name_representative'           => 'Nombre del representante',
-        'phone_representative'          => 'Teléfono del representante',
-        'representative'                => 'representante',
-        
-        //Validaciones
-        'enter_a_email_representative'  => 'Escriba el correo del representante',
-        'enter_a_name_representative'   => 'Escriba el nombre del representante',
-        'enter_a_phone_representative'  => 'Escriba un teléfono del representante',
-    ),
     'role'  => array(
         'administrator'  => 'administrador',
         'collaborator'   => 'colaborador',
@@ -138,9 +122,7 @@ return [
         'select_a_role'  => 'Seleccione un rol',
         'university'     => 'universidad',
     ),
-    'settings'  => array(
-              
-    ),
+
     'social'  => array(
         'facebook_page'=>  'facebook página',
         'linkeind'     =>  'Linkeind',

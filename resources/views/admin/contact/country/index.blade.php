@@ -7,7 +7,10 @@
             <h1 class="title_main">Configuración regional: País</h1>
         </div>
     </article>
-    @include('admin.partials.message')
+
+    <section id="content-message">
+        @include('admin.partials.message')
+    </section>
 
     <section class="row">
         {!! Form::model(Request::all(),['route' => 'admin.country.index', 'method' => 'GET', 'class' => 'form-inline' ])!!}

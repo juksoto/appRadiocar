@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Session;
 use Radiocar\Core\Entities\Contact\RcCountry;
 use Radiocar\Core\Helpers;
@@ -31,21 +30,22 @@ class CountryController extends Controller
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $help)
+    public function __construct(Request $request, Helpers $helper)
     {
         $this -> request = $request;
 
+        $this -> helper = $helper;
+
         $this -> data = new \stdClass();
 
-        $this -> middleware('@findUser', ['only' => ['show','edit','update','destroy']]);
     }
 
     /**
-     * @param Route $route
+     * @param $id id del Country
      */
-    public function findUser(Route $route)
+    public function findUser($id)
     {
-        $this -> country = RcCountry::findOrFail( $route -> getParameter('country') );
+        $this -> country = RcCountry::findOrFail( $id );
     }
 
 
@@ -117,7 +117,11 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this -> findUser($id);
+        $this -> data -> collection = $this -> country;
+        $data = $this -> data;
+
+        return view('admin.contact.country.edit', compact('data'));
     }
 
     /**
@@ -129,7 +133,17 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this -> findUser($id);
+        $this -> country -> fill( $request -> all() );
+        $this -> country -> save();
+
+        $message_floating = $this -> country -> country . " " . trans('admin.message.alert_field_update');
+        $message_alert ="alert-success";
+
+        Session::flash('message_floating', $message_floating);
+        Session::flash('message_alert', $message_alert);
+
+        return redirect() -> route( 'admin.country.index' );
     }
 
     /**
@@ -137,9 +151,28 @@ class CountryController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * Funcion valueActive, hace el cambio si el campo active es true, lo vuelve false. Enviamos como parametro
+     * un booleano, el valor actual del campo acrive.
      */
     public function destroy($id)
     {
-        //
+        $this -> findUser($id);
+        $active = $this -> helper -> valueActive( $this -> country -> active );
+        $this -> country -> active = $active['active'];
+        $message = $this -> country -> country . " " .$active['message'];
+        $this -> country -> save();
+
+       if ($this -> request -> ajax() )
+        {
+            return response() -> json([
+                'message'       =>  $message,
+                'class'         =>  $active['message_alert'],
+            ]);
+        }
+
+        Session::flash('message_floating', $message);
+        Session::flash('message_alert', $active['message_alert']);
+
+        return redirect() -> route('admin.country.index');
     }
 }

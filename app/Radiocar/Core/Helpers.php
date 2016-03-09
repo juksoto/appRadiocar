@@ -14,17 +14,19 @@ class Helpers extends Model
     public function valueActive($active)
     {
 
-        if ($active == 0)
+        if ($active == false)
         {
-            $active = 1;
+            $active = true;
             $message =  trans('admin.status.has_been_published');
-            return array('message' => $message, 'active' => $active );
+            $message_alert ="alert-success";
+            return array('message' => $message, 'message_alert' => $message_alert, 'active' => $active );
         }
         else
         {
-            $active = 0;
+            $active = false;
             $message =  trans('admin.status.has_been_removed');
-            return array('message' => $message, 'active' => $active );
+            $message_alert = "alert-warning ";
+            return array('message' => $message, 'message_alert' => $message_alert,  'active' => $active );
         }
     }
 
