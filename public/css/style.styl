@@ -178,6 +178,11 @@ table
 /****
 * Class Content Custom
 */
+.title_main
+	span
+		color colorRadiocar2
+		display block
+		font-size 0.6em
 .filter-section
 	margin-bottom 1rem
 	label
@@ -224,13 +229,6 @@ table
 	#collaborators_template_0
 		display none
 		
-	
-
-.col-centered
-	display block
-	margin-right auto
-	margin-left auto
-	float none
 
 	
 /***
@@ -251,67 +249,156 @@ table
 .check-active
 	color colorGrass2
 .check-inactive
-	color colorLigthGray2
+	color colorDarkGray1
 
-/*
- * Estilos crear usuarios
- */
-.aside_user
-	list-style none
-	padding 0
-	.aside_user_item
-		background: #fff;
-		border: 1px solid #d4d4d4;
-		border-radius: 3px;
-		margin: 0.5em 0em;
-		padding: 0.5em 1em;
-		a
-			color #000
-			span
-				color colorGrapeFruit2
-				font-size 12px
-/*
- * Estilos para páneles de entradas, páginas, país, ciudad, usuarios,
- */
-.panel-mediumgray
-	background colorDarkGray2 !important
-	color #fff
-	strong
-		color #fff
-	h3
-		color #fff !important
+/**
+ * Add Styles to Bootstrap
+*/
 
-.panel-grapefruit
-	background colorGrapeFruit2 !important
-	
-.panel-bluejeans
-	background colorBlueJeans2 !important
 
-.panel-heading h3
-	color #4E4E4E
-	font-size 1em
-	padding 0px 15px !important
-	margin 0
-	
-/*
- * Padding al lado izquierdo y derecho, en los paneles de creación de usuarios y universidades
- */
-.fill
-	padding 15px 40px
-	box-shadow 0px 0px 5px #d4d4d4
-	
-.border-box
-	border: 1px solid #d4d4d4;
-	box-shadow 0px 0px 3px #d4d4d4
-	
-.separator-program
-	border-bottom 1px solid #d4d4d4
-	border-bottom-style dotted
-	border-bottom-width 2px
-	display block
-	margin 0em auto .7em auto
-	padding-bottom 10px
-	
-.color-program
-	color colorGrapeFruit2
-	
+/**
+* Margin responsive
+*/
+
+@media (min-width:0px)
+	.margin-xs-top
+		margin-top 15px !important
+	.margin-xs-right
+		margin-right 15px
+	.margin-xs-bottom
+		margin-bottom 15px
+	.margin-xs-left
+		margin-left 15px
+
+@media (min-width: 768px) 
+	.margin-sm-top
+		margin-top 15px !important
+	.margin-sm-right
+		margin-right 15px
+	.margin-sm-bottom
+		margin-bottom 15px
+	.margin-sm-left
+		margin-left 15px
+
+@media (min-width: 992px) 
+	.margin-md-top
+		margin-top 15px
+	.margin-md-right
+		margin-right 15px
+	.margin-md-bottom
+		margin-bottom 15px
+	.margin-md-left
+		margin-left 15px
+
+@media (min-width: 1200px) 
+	.margin-lg-top
+		margin-top 15px
+	.margin-lg-right
+		margin-right 15px
+	.margin-lg-bottom
+		margin-bottom 15px
+	.margin-lg-left
+		margin-left 15px
+
+/**
+	* No margin
+**/
+
+.no-margin
+	margin 0 !important
+
+@media (min-width: 0px)
+	.no-margin-xs-top
+		margin-top 0px
+	.no-margin-xs-right
+		margin-right 0px
+	.no-margin-xs-bottom
+		margin-bottom 0px
+	.no-margin-xs-left
+		margin-left 0px
+
+@media (min-width: 768px) 
+	.no-margin-sm-top
+		margin-top 0px !important
+	.no-margin-sm-right
+		margin-right 0px
+	.no-margin-sm-bottom
+		margin-bottom 0px
+	.no-margin-sm-left
+		margin-left 0px
+
+@media (min-width: 992px) 
+	.no-margin-md-top
+		margin-top 0px
+	.no-margin-md-right
+		margin-right 0px
+	.no-margin-md-bottom
+		margin-bottom 0px
+	.no-margin-md-left
+		margin-left 0px
+
+@media (min-width: 1200px) 
+	.no-margin-lg-top
+		margin-top 0px
+	.no-margin-lg-right
+		margin-right 0px
+	.no-margin-lg-bottom
+		margin-bottom 0px
+	.no-margin-lg-left
+		margin-left 0px
+
+/**
+* No padding en grid de bootstrap
+*/
+
+.no-padding
+	@media screen and (min-width 768px)	
+		padding 0 !important
+
+
+
+/**
+* Align tipography responsive
+*/
+
+@media (min-width: 0px)
+	.text-xs-left  
+		text-align left 
+	.text-xs-right  
+		text-align right 
+	.text-xs-center  
+		text-align center 
+	.text-xs-justify  
+		text-align justify 
+
+@media (min-width: 768px) 
+	.text-sm-left  
+		text-align left 
+	.text-sm-right  
+		text-align right 
+	.text-sm-center  
+		text-align center 
+	.text-sm-justify  
+		text-align justify 
+
+
+@media (min-width: 992px) 
+	.text-md-left  
+		text-align left 
+	.text-md-right  
+		text-align right 
+	.text-md-center  
+		text-align center 
+	.text-md-justify  
+		text-align justify 
+
+
+@media (min-width: 1200px) 
+	.text-lg-left  
+		text-align left 
+	.text-lg-right  
+		text-align right 
+	.text-lg-center  
+		text-align center 
+	.text-lg-justify  
+		text-align justify 
