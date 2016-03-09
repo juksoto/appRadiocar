@@ -15,6 +15,7 @@
             </p>
         </article>
     </section>
+
     {!! Form::model($data -> collection,['route' => ['admin.country.update', $data -> collection], 'method' => 'PUT', 'class' => 'form-horizontal' ])!!}
 
     <section class="form-group">
@@ -23,19 +24,38 @@
         </section>
     </section>
 
-    @include('admin.contact.country.partials.fields')
+    <!-- Section Fields -->
+        @include('admin.contact.country.partials.fields')
+    <!-- End Section Fields -->
 
+    <!-- Section Buttons -->
     <section class="form-group">
-        <article class="col-sm-offset-2 col-sm-10">
+
+        <!-- Button Submit and Cancel -->
+        <article class="col-md-offset-2 col-md-4">
             {!! Form::submit(trans('admin.submit.update_country'), ['class' => 'btn btn-primary' , 'id' => 'send-form']) !!}
             <a class="btn btn-danger" href="{{ route('admin.country.index') }}">{{ trans('admin.submit.back') }}</a>
         </article>
+        <!-- End Button Submit and Cancel -->
+
+        <!-- Button Destroy -->
+        <article class="col-md-offset-4 col-md-2 text-right">
+
+            {!! Form::open(['route' => ['admin.country.destroy', $data -> collection], 'method' => 'DELETE', 'class' => '' ])!!}
+
+            @if ($data -> collection -> active == true)
+                {!! Form::submit(trans('admin.submit.unpublish'), ['class' => 'btn btn-warning']) !!}
+                @else
+                {!! Form::submit(trans('admin.submit.publish'), ['class' => 'btn btn-success']) !!}
+            @endif
+
+            {!! Form::close()!!}
+
+        </article>
+        <!-- End Button Destroy -->
     </section>
+    <!-- End Section Buttons -->
 
     {!! Form::close()!!}
-
-    <article class="row">
-        @include('admin.contact.country.partials.active')
-    </article>
 
 @endsection
