@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\AdminControllers\Contact;
 
-use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Http\Requests\CreateCountryRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Radiocar\Core\Entities\Contact\RcCountry;
 use Radiocar\Core\Helpers;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
-use App\Http\Requests\CreateCountryRequest;
+
+
 class CountryController extends Controller
 {
     /**
@@ -57,6 +59,7 @@ class CountryController extends Controller
     public function index()
     {
         $collection = RcCountry::countryName( $this -> request -> get('search') )
+            -> sortable()
             -> active( $this -> request -> get('active') )
             -> orderBy( 'country', 'DESC' )
             -> paginate();

@@ -3,15 +3,24 @@
 namespace Radiocar\Core\Entities\Contact;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class RcCountry extends Model
 {
+    use Sortable;
+
     protected $table = 'rc_countries';
 
     protected $fillable = [
         'country',
         'iso',
         'active'
+    ];
+
+    protected $sortable = [
+        'id',
+        'country',
+        'iso',
     ];
 
     /**

@@ -4,8 +4,12 @@
             <thead>
             <tr>
                 <th class="text-capitalize">id</th>
-                <th class="text-capitalize">{{ trans('admin.country.country') }}</th>
-                <th class="text-capitalize">{{ trans('admin.country.iso') }}</th>
+                <th class="text-capitalize">
+                @sortablelink('country', trans("admin.country.country"))
+                </th>
+                <th class="text-capitalize">
+                    @sortablelink('iso', trans("admin.country.iso"))
+                </th>
                 <th class="text-center text-capitalize">{{ trans('admin.status.status') }}</th>
             </tr>
             </thead>
