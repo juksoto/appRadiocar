@@ -29,7 +29,7 @@ class RcCity extends Model
 
     public function country()
     {
-        return $this->belongsTo('Radiocar\Core\Entities\Contact\RcCountry','country_id');
+        return $this -> belongsTo('Radiocar\Core\Entities\Contact\RcCountry','country_id');
     }
 
     /**

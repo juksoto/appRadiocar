@@ -50,6 +50,8 @@ return [
         'cities'                 => 'ciudades',
         'name_city'              => 'Nombre de la ciudad',
         'new_city'               => 'Nueva ciudad',
+        'total_cities'           => 'Total de ciudades',
+        
 
         //validation
         'enter_a_name_city'      => 'Ingrese el nombre de la ciudad',
@@ -104,8 +106,9 @@ return [
         'error_city_country'                 => 'Recuerde crear o activar primero un país para luego crear una ciudad.',
 
         //alerts
-        
         'alert_field_update'                 => 'se actualizo.',
+        'create_new_country'                 => 'Se ha creado un nuevo país.',
+        'create_new_city'                    => 'Se ha creado una nueva ciudad para ',
 
         // University
         'img_profile_university'             => 'La imagen debe ser cuadrada (200px) em formato png o jpg. Max 150 kb',

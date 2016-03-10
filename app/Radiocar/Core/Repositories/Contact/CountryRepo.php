@@ -9,8 +9,9 @@ class CountryRepo extends Model
 {
     public function get()
     {
-        return RcCountry::All() -> where ( 'active' , true );
-
+        return RcCountry::orderBy('country' ,'ASC')
+            -> where ( 'active' , true )
+            -> get();
     }
 }
 

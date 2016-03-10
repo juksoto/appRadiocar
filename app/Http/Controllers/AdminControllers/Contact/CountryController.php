@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Radiocar\Core\Entities\Contact\RcCountry;
 use Radiocar\Core\Helpers;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
+use App\Http\Requests\EditCountryRequest;
 
 
 class CountryController extends Controller
@@ -63,7 +64,7 @@ class CountryController extends Controller
         $collection = RcCountry::countryName( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'country', 'DESC' )
+            -> orderBy( 'country', 'ASC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
@@ -94,7 +95,7 @@ class CountryController extends Controller
     {
         $country = RcCountry::create( $request -> all() );
 
-        $message_floating = "Ha sido creado un nuevo país";
+        $message_floating = trans('admin.message.create_new_country');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
@@ -136,9 +137,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditCountryRequest $request, $id)
     {
         $this -> findUser($id);
+
         $this -> country -> fill( $request -> all() );
         $this -> country -> save();
 

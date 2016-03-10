@@ -1,39 +1,54 @@
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th class="text-capitalize">id</th>
-                <th class="text-capitalize">
-                @sortablelink('country', trans("admin.country.country"))
-                </th>
-                <th class="text-capitalize">
-                    @sortablelink('iso', trans("admin.country.iso"))
-                </th>
-                <th class="text-center text-capitalize">{{ trans('admin.status.status') }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($data -> collections as $collection)
-                <tr data-id="{{ $collection->id  }}">
-                    <td>  {!! $collection -> id !!}</td>
-                    <td> <a href="{{ route('admin.country.edit', $collection) }}"> {!! $collection -> country !!} </a></td>
-                    <td> {!! $collection -> iso !!}</td>
-                    <td class="text-center">
-                        <a href="#" class="btn-active">
-                            <span class="glyphicon glyphicon-ok-sign @if ($collection->active == 1) check-active  @else check-inactive @endif "></span>
-                        </a>
-                    </td>
-                </tr>
-            @empty
-            </tbody>
-        </table>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-capitalize">
+            Nº
+        </th>
+        <th class="text-capitalize">
+            @sortablelink('country', trans("admin.city.city"))
+        </th>
+        <th class="text-capitalize">
+            @sortablelink('iso', trans("admin.country.country"))
+        </th>
+        <th class="text-center text-capitalize">
+            {{ trans('admin.status.status') }}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
 
+    @forelse($data -> collections as $key => $collection)
+        <tr data-id="{{ $collection->id  }}">
+            <td>
+                {!! ($key + 1) !!}
+            </td>
+            <td>
+                {!! $collection -> city !!}
+                <small>
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <a href="{{ route('admin.country.edit', $collection) }}">
+                        Editar
+                    </a>
+                </small>
+            </td>
+            <td>
+                {!! $collection -> country -> country !!}
+            </td>
+            <td class="text-center">
+                <a href="#" class="btn-active">
+                    @if ($collection->active == true)
+                        <span class="glyphicon glyphicon-ok-sign color-sucessful"></span>
+                    @else
+                        <span class="glyphicon glyphicon-remove-sign color-danger"></span>
+                    @endif
+                </a>
+            </td>
+        </tr>
+    @empty
         <div class="alert alert-danger alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
             {{ trans('admin.message.no_records_found') }}
         </div>
 
-        @endforelse
-    </div>
-</div>
+    @endforelse
+</table>

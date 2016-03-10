@@ -5,10 +5,11 @@ namespace App\Http\Controllers\AdminControllers\Contact;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Http\Requests\CreateCountryRequest;
+use App\Http\Requests\CreateCityRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Radiocar\Core\Entities\Contact\RcCity;
+use Radiocar\Core\Entities\Contact\RcCountry;
 use Radiocar\Core\Helpers;
 use Radiocar\Core\Repositories\Contact\CityRepo;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
@@ -81,8 +82,9 @@ class CityController extends Controller
         $collection = RcCity::cityName( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'city', 'DESC' )
-            -> paginate();
+            -> orderBy( 'city', 'ASC' )
+            -> with('country')
+            -> paginate(25);
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
@@ -111,11 +113,13 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCountryRequest $request)
+    public function store(CreateCityRequest $request)
     {
         $city = RcCity::create( $request -> all() );
 
-        $message_floating = "Ha sido creado un nuevo país";
+        $country = RcCountry::find($city -> country_id);
+
+        $message_floating = trans('admin.message.create_new_city') .$country -> country;
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);

@@ -29,7 +29,7 @@ class RcCountry extends Model
      */
     public function city()
     {
-        return $this->hasMany('Radiocar\Core\Entities\Contact\RcCity', 'country_id');
+        return $this -> hasMany('Radiocar\Core\Entities\Contact\RcCity', 'country_id');
     }
 
     /**

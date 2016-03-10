@@ -73,9 +73,17 @@
 
 
     <section class="small-12 large-12 medium-12 columns">
-    
          @include('admin.contact.country.partials.table')
-
+    </section>
+    <section class="col-md-12 text-center">
+        <div class="pagination text-center">
+            <p>
+                {!! $data -> collections ->links() !!}
+            </p>
+            <p>
+                {!! trans('admin.city.total_cities') !!}: {!! $data -> collections -> count() !!}
+            </p>
+        </div>
     </section>
 
     <section class="">

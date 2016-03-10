@@ -112,15 +112,31 @@ table
 			background colorMediumGray1
 			padding .3em
 			text-align left
+			a
+				text-decoration underline
 		td
 			background white
 			padding 0.4em
 			font-weight 500
 	tbody
-		tr:nth-child(even)
-			background colorLigthGray1
+		tr
+			&:nth-child(even)
+				background colorLigthGray1
+			&:hover
+				background colorBlueJeans1 !important
+				color white
+				a
+					color white
+					text-decoration underline
+				small
+					opacity 1
+				.glyphicon
+					color white
 		td
 			padding .3em
+			small
+				opacity 0
+				margin-left 1em
 	
 /****
  * Alerts
@@ -239,6 +255,9 @@ table
 
 .color-notice, .color-warning
 	createIconColor(colorSunFlower2)
+
+.color-sucessful
+	createIconColor(colorGrass2)
 
 
 /****
