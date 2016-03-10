@@ -8,39 +8,57 @@ use App\Http\Requests;
 use App\Http\Requests\CreateCountryRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Radiocar\Core\Entities\Contact\RcCountry;
+use Radiocar\Core\Entities\Contact\RcCity;
 use Radiocar\Core\Helpers;
+use Radiocar\Core\Repositories\Contact\CityRepo;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
+use Illuminate\Routing\Route;
 
-
-class CountryController extends Controller
+class CityController extends Controller
 {
+
     /**
-     * @var Request
+     * @var array contains a collection of cities
      */
-    private $request;
+    protected $city;
     /**
-     * @var array
+     * @var array contains a collection of countries
      */
     protected $country;
+
+    /**
+     * @var array Contiene la informacion que vamos a enviar a las vistas
+     */
+    protected $data;
+
     /**
      * @var Helpers
      */
     protected $helper;
 
     /**
+     * @var Request
+     */
+    private $request;
+
+    /**
      * @param Request $request
      * beforeFilter Este filtro sirve para llamar el metodo findUser con las siguientes opciones
      */
-    public function __construct(Request $request, Helpers $helper)
+    public function __construct(Request $request, Helpers $helper, CityRepo $cityRepo, CountryRepo $countryRepo)
     {
         $this -> request = $request;
+
+        $this -> country = $countryRepo -> get();
+
+        $this -> cityRepo = $cityRepo;
 
         $this -> helper = $helper;
 
         $this -> data = new \stdClass();
 
-       //$this -> middleware('findUser', ['only' => ['show','edit','update','destroy']]);
+      //  $this -> middleware('@findUser', ['only' => ['show','edit','update','destroy']]);
+
 
     }
 
@@ -49,7 +67,7 @@ class CountryController extends Controller
      */
     public function findUser($id)
     {
-        $this -> country = RcCountry::findOrFail( $id );
+        $this -> city = RcCity::findOrFail( $id );
     }
 
 
@@ -60,28 +78,31 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $collection = RcCountry::countryName( $this -> request -> get('search') )
+        $collection = RcCity::cityName( $this -> request -> get('search') )
             -> sortable()
             -> active( $this -> request -> get('active') )
-            -> orderBy( 'country', 'DESC' )
+            -> orderBy( 'city', 'DESC' )
             -> paginate();
 
         $this -> data -> collections = $collection;
         $data = $this -> data;
 
-        return view( 'admin.contact.country.index', compact( 'data' ) );
+        return view( 'admin.contact.city.index', compact( 'data' ) );
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * $this -> country = array con el listado de todos los paises.
      * @return \Illuminate\Http\Response
+     * [Description]
+     * Si no hay paises creados, redirecciona al index e imprime el mensaje que primero debe crear un pais.
      */
     public function create()
     {
+        $this -> data -> country = $this -> country;
         $data = $this -> data;
 
-        return view('admin.contact.country.create',  compact('data')); //
+        return $this -> cityRepo -> validateExistCountry( $this -> country -> count(), $data );
     }
 
     /**
@@ -92,7 +113,7 @@ class CountryController extends Controller
      */
     public function store(CreateCountryRequest $request)
     {
-        $country = RcCountry::create( $request -> all() );
+        $city = RcCity::create( $request -> all() );
 
         $message_floating = "Ha sido creado un nuevo país";
         $message_alert ="alert-success";
@@ -100,7 +121,7 @@ class CountryController extends Controller
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route('admin.country.index');
+        return redirect() -> route('admin.city.index');
     }
 
     /**
@@ -122,11 +143,10 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        $this -> findUser($id);
-        $this -> data -> collection = $this -> country;
+        $this -> data -> collection = $this -> city;
         $data = $this -> data;
 
-        return view('admin.contact.country.edit', compact('data'));
+        return view('admin.contact.city.edit', compact('data'));
     }
 
     /**
@@ -138,17 +158,16 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this -> findUser($id);
-        $this -> country -> fill( $request -> all() );
-        $this -> country -> save();
+        $this -> city -> fill( $request -> all() );
+        $this -> city -> save();
 
-        $message_floating = $this -> country -> country . " " . trans('admin.message.alert_field_update');
+        $message_floating = $this -> city -> city . " " . trans('admin.message.alert_field_update');
         $message_alert ="alert-success";
 
         Session::flash('message_floating', $message_floating);
         Session::flash('message_alert', $message_alert);
 
-        return redirect() -> route( 'admin.country.index' );
+        return redirect() -> route( 'admin.city.index' );
     }
 
     /**
@@ -161,13 +180,12 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        $this -> findUser($id);
-        $active = $this -> helper -> valueActive( $this -> country -> active );
-        $this -> country -> active = $active['active'];
-        $message = $this -> country -> country . " " .$active['message'];
-        $this -> country -> save();
+        $active = $this -> helper -> valueActive( $this -> city -> active );
+        $this -> city -> active = $active['active'];
+        $message = $this -> city -> city . " " .$active['message'];
+        $this -> city -> save();
 
-       if ($this -> request -> ajax() )
+        if ($this -> request -> ajax() )
         {
             return response() -> json([
                 'message'       =>  $message,
@@ -178,6 +196,6 @@ class CountryController extends Controller
         Session::flash('message_floating', $message);
         Session::flash('message_alert', $active['message_alert']);
 
-        return redirect() -> route('admin.country.index');
+        return redirect() -> route('admin.city.index');
     }
 }

@@ -29,7 +29,7 @@ return [
         'no_phones'                 => 'No hay teléfonos. Debe agregar uno.',
     ),
     'country'  => array(
-        'content_header'            => 'Ingresa el nombre del nuevo país y su código ISO',
+        'content_header'            => 'Ingrese el nombre del nuevo país y su código ISO',
         'countries'                 => 'paises',
         'country'                   => 'país',
         'edit_country'              => 'Editar país',
@@ -45,10 +45,11 @@ return [
         
     ),
     'city'  => array(
+        'content_header'         => 'Ingrese el nombre de la ciudad y escoja el país.',
         'city'                   => 'ciudad',
         'cities'                 => 'ciudades',
-        'name_city'              => 'nombre de la ciudad',
-        'new_city'               => 'nueva ciudad',
+        'name_city'              => 'Nombre de la ciudad',
+        'new_city'               => 'Nueva ciudad',
 
         //validation
         'enter_a_name_city'      => 'Ingrese el nombre de la ciudad',
@@ -90,7 +91,7 @@ return [
         'email_already_exists'               => 'El correo ya existe.',
         'email_is_required'                  => 'El correo es un campo obligatorio.',
         'email_public'                       => 'Este correo es el que visualizarán los usuarios.',
-        'error_city_country'                 => 'Debe crear pero un país para crear una ciudad.',
+        
         'is_required'                        => 'es un campo obligatorio.',
         'no_records_found'                   => 'No se encontraron registros.',
         'password_confirmation_is_required'  => 'La contraseña de confirmación es un campo obligatorio.',
@@ -98,6 +99,9 @@ return [
         'the_password_does_not_match'        => 'la contraseña no coincide',
         'user_already_exists'                => 'El usuario ya existe.',
         'user_is_required'                   => 'El usuario es un campo requerido.',
+
+        //Errors
+        'error_city_country'                 => 'Recuerde crear o activar primero un país para luego crear una ciudad.',
 
         //alerts
         

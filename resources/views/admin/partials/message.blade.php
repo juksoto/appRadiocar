@@ -1,7 +1,7 @@
 @if ($errors->any())
-    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+    <div class="alert alert-danger alert-dismissible" role="alert">
         <ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             @foreach($errors->all() as $error)
             <li>{{$error}}</li>
             @endforeach
@@ -10,9 +10,12 @@
 @endif
 
 @if(Session::has('message'))
-    <div class="alert alert-success alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-        {{ Session::get("message") }}
+    <div class="alert {{ Session::get("message_alert") }} alert-dismissible " role="alert">
+        @if( Session::has('message_ico')  )
+            <span class="glyphicon glyphicon-{{ Session::get("message_ico") }}" aria-hidden="true"></span>
+        @endif
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{ Session::get("message") }}
     </div>
 @endif
 

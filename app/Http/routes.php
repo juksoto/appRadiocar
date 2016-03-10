@@ -34,6 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'admin'], function()
     {
         Route::resource('country', 'AdminControllers\Contact\CountryController');
+        Route::resource('city', 'AdminControllers\Contact\CityController');
 
     });
 });
