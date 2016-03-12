@@ -22,10 +22,12 @@
                 <tr data-id="{{ $collection->id  }}">
                     <td>  {!! ($key + 1) !!}</td>
                     <td>
-                        {!! $collection -> country !!}
+                        <a href="{{ route('admin.country.edit', $collection) }}">
+                            {!! $collection -> country !!}
+                        </a>
                         <small>
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             <a href="{{ route('admin.country.edit', $collection) }}">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 Editar
                             </a>
                         </small>

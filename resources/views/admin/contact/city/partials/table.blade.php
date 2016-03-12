@@ -23,10 +23,12 @@
                 {!! ($key + 1) !!}
             </td>
             <td>
-                {!! $collection -> city !!}
+                <a href="{{ route('admin.city.edit', $collection) }}">
+                    {!! $collection -> city !!}
+                </a>
                 <small>
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    <a href="{{ route('admin.country.edit', $collection) }}">
+                    <a href="{{ route('admin.city.edit', $collection) }}">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         Editar
                     </a>
                 </small>

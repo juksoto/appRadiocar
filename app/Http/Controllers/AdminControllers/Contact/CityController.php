@@ -147,7 +147,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
+        $this -> findUser($id);
         $this -> data -> collection = $this -> city;
+        $this -> data -> country = $this -> country;
         $data = $this -> data;
 
         return view('admin.contact.city.edit', compact('data'));
