@@ -5,10 +5,10 @@
             Nº
         </th>
         <th class="text-capitalize">
-            @sortablelink('country', trans("admin.city.city"))
+            @sortablelink('city', trans("admin.city.city"))
         </th>
         <th class="text-capitalize">
-            @sortablelink('iso', trans("admin.country.country"))
+            @sortablelink('country_id', trans("admin.country.country"))
         </th>
         <th class="text-center text-capitalize">
             {{ trans('admin.status.status') }}

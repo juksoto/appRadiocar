@@ -14,6 +14,7 @@ use Radiocar\Core\Helpers;
 use Radiocar\Core\Repositories\Contact\CityRepo;
 use Radiocar\Core\Repositories\Contact\CountryRepo;
 use Illuminate\Routing\Route;
+use App\Http\Requests\EditCityRequest;
 
 class CityController extends Controller
 {
@@ -162,8 +163,9 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditCityRequest $request, $id)
     {
+        $this -> findUser($id);
         $this -> city -> fill( $request -> all() );
         $this -> city -> save();
 
@@ -186,6 +188,8 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
+        $this -> findUser($id);
+
         $active = $this -> helper -> valueActive( $this -> city -> active );
         $this -> city -> active = $active['active'];
         $message = $this -> city -> city . " " .$active['message'];
